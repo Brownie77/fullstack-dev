@@ -6,7 +6,7 @@ Design a web application that allows employees to submit feedback toward each ot
 
 *Partial solutions are acceptable.*  It is not necessary to submit a complete solution that implements every requirement.
 
-## Stack
+### Stack
 
 * AdonisJS for server-side
 * VueJS for client-side
