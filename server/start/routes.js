@@ -29,5 +29,7 @@ Route.group(()=> {
   Route.get('reviews', 'ReviewController.index').middleware('auth');
 //get
   Route.get('get/admin/users/all', 'AdminController.getAllUsers').middleware('auth:admin')
+//add review
+Route.post('admin/add/review', 'ReviewController.create').middleware('auth:admin')
 })
   .prefix('api');
