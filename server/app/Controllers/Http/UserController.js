@@ -10,15 +10,15 @@ async login({request, auth}) {
   return token
 };
 
- async register({request}) {
-    const {email, password} = request.all()
-    const user = await User.create({
-      email,
-      password,
-      username: email,
-    })
-    return user;
-  }
+//  async register({request}) {
+//     const {email, password} = request.all()
+//     await User.create({
+//       email,
+//       password,
+//       username: email,
+//     })
+//     return this.login(...arguments);
+//   }
 }
 
 module.exports = UserController

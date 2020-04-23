@@ -18,8 +18,16 @@ const Route = use('Route')
 
 
 Route.group(()=> {
-  Route.post('auth/register', 'UserController.register');
+//registration
+  Route.post('auth/admin/register', 'AdminController.registerAdmin');
+  Route.post('auth/register', 'AdminController.register').middleware('auth:admin');
+//check
+  Route.get('auth/admin/check', 'AdminController.check').middleware('auth:admin')// просто проверяю, кого оно возвращает
+//login
+  Route.post('auth/admin/login', 'AdminController.loginAdmin');
   Route.post('auth/login', 'UserController.login');
-
+  Route.get('reviews', 'ReviewController.index').middleware('auth');
+//get
+  Route.get('get/admin/users/all', 'AdminController.getAllUsers').middleware('auth:admin')
 })
   .prefix('api');
