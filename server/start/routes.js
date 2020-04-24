@@ -26,10 +26,15 @@ Route.group(()=> {
 //login
   Route.post('auth/admin/login', 'AdminController.loginAdmin');
   Route.post('auth/login', 'UserController.login');
-  Route.get('reviews', 'ReviewController.index').middleware('auth');
-//get
+  //get all users review
+  Route.get('reviews:user_id', 'ReviewController.index').middleware('auth');
+//get all users 
   Route.get('get/admin/users/all', 'AdminController.getAllUsers').middleware('auth:admin')
 //add review
-Route.post('admin/add/review', 'ReviewController.create').middleware('auth:admin')
+Route.post('admin/review', 'ReviewController.create').middleware('auth:admin')
+//delete review
+Route.delete('admin/review:review_id','ReviewController.destroy').middleware('auth:admin')
+//update review
+Route.patch('admin/review:review_id','ReviewController.update').middleware('auth:admin')
 })
   .prefix('api');
