@@ -9,7 +9,7 @@ class ReviewController {
         const user = await User.find(user_id)
         // const user = await auth.getUser() //это можно добавить к user controller, чтобы юзеры могли смотреть инфо про количество ревью и того или иного программиста
         console.log(user.username);
-        return await user.reviews().fetch();//нужно переписать, чтобы можно было получать инфо о ревью тех, кого надо, а не по аутентификации.
+        return await user.reviews().fetch();
     };
     async create({request}) {
       const {title, user_id, body } = request.all();

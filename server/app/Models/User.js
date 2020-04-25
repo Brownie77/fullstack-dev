@@ -38,6 +38,11 @@ class User extends Model {
   reviews () {
     return this.hasMany('App/Models/Review')
   }
+
+  feedbacks() {
+    return this.manyThrough('App/Models/Review', 'feedbacks')
+  }
 }
+
 
 module.exports = User

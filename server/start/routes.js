@@ -32,9 +32,16 @@ Route.group(()=> {
   Route.get('get/admin/users/all', 'AdminController.getAllUsers').middleware('auth:admin')
 //add review
 Route.post('admin/review', 'ReviewController.create').middleware('auth:admin')
+//assign employees to participate in another employee's performance review
+Route.post('admin/review/add/:user_id','ReviewController.addToReview').middleware('auth:admin')
 //delete review
 Route.delete('admin/review:review_id','ReviewController.destroy').middleware('auth:admin')
 //update review
 Route.patch('admin/review:review_id','ReviewController.update').middleware('auth:admin')
+//task create
+Route.post('review/:review_id/tasks', 'FeedbackController.create').middleware('auth')
+//show all feedback on select 
+Route.get('review/:review_id/tasks', 'FeedbackController.index').middleware('auth')
+
 })
   .prefix('api');

@@ -7,6 +7,10 @@ class Review extends Model {
     user() {
         return this.belongsTo('App/Models/User')
     }
+
+    feedbacks() {
+        return this.hasMany('App/Models/Feedback')
+    }
 }
 
 module.exports = Review
