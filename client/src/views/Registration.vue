@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>HELLOOO</p>
+   <h1>Register</h1>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 
 
 export default {
-  name: 'Test',
+  name: 'Registration',
   data() {
     return {
     };
