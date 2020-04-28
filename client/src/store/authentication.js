@@ -18,8 +18,18 @@ export default {
   },
   actions: {
     logout({ commit }) {
-      commit('setToken', null);
+      commit('SET_TOKEN', null);
       router.push('/login');
+    },
+    loginUser({ state, commit }) {
+      return HTTP().post('auth/login', {
+        username: state.loginEmail,
+        password: state.loginPassword,
+      })
+        .then(({ data }) => {
+          commit('SET_TOKEN', data.token);
+          router.push('/dashboard');
+        });
     },
     loginAdmin({ state, commit }) {
       return HTTP().post('auth/admin/login', {
@@ -27,8 +37,8 @@ export default {
         password: state.loginPassword,
       })
         .then(({ data }) => {
-          commit('setToken', data.token);
-          router.push('/dashboard');// надо сменить урлу
+          commit('SET_TOKEN', data.token);
+          router.push('/dashboard');
         });
     },
     registerAdmin({ state, commit }) {
@@ -37,23 +47,23 @@ export default {
         password: state.registerPassword,
       })
         .then(({ data }) => {
-          commit('setToken', data.token);
+          commit('SET_TOKEN', data.token);
           router.push('/login');
         });
     },
-    registerEmployee({ state }) {
+    registerEmployee({ state, commit }) {
       return HTTP().post('auth/register', {
         email: state.registerEmail,
         password: state.registerPassword,
-      });
-      // .then(({ data }) => {
-      //   commit('setToken', data.token);
-      //   router.push('/login');
-      // });
+      })
+        .then(({ data }) => {
+          commit('SET_TOKEN', data.token);
+          router.push('/login');
+        });
     },
   },
   mutations: {
-    setToken(state, token) {
+    SET_TOKEN(state, token) {
       state.token = token;
     },
     setRegisterEmail(state, email) {

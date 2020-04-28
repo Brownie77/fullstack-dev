@@ -28,6 +28,24 @@
       <v-icon class="mr-2">account_circle</v-icon>
       Login
     </v-btn>
+<!--    <div class="dashboard__registration-wrap">-->
+<!--      <div class="dashboard__header-wrap">-->
+<!--        <h1 class="dashboard__header">Admin login</h1>-->
+<!--        <i class="fas fa-portrait dashboard__header-icon"></i>-->
+<!--      </div>-->
+<!--      <div class="dashboard__registration-inputs">-->
+<!--        <input class="dashboard__registration-input"-->
+<!--               type="text" name="email" placeholder="E-mail" v-bind:value="loginEmail"-->
+<!--               v-on:input="setLoginEmail"/>-->
+<!--        <input class="dashboard__registration-input"-->
+<!--               type="password" name="password" placeholder="Password"-->
+<!--               v-bind:value="loginPassword"-->
+<!--               v-on:input="setLoginPassword"/>-->
+<!--        <div class="dashboard__registration-button" v-on:click="registerUser">-->
+<!--          <p class="dashboard__registration-button_definition">Register</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
 </template>
 
@@ -49,6 +67,7 @@ export default {
     ]),
     ...mapActions('authentication', [
       'loginAdmin',
+      'loginUser',
     ]),
   },
 };

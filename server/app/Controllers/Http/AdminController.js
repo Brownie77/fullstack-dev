@@ -1,6 +1,7 @@
 'use strict'
 const Admin = use('App/Models/Admin');
 const User = use('App/Models/User');
+const AuthorizationService = use('App/Services/AuthorizationService');
 
 class AdminController {
     async registerAdmin({request}) {
@@ -31,6 +32,15 @@ class AdminController {
         const users = await Admin.pair('id', 'password');
         console.log(users);
     }
+
+  async destroy({params}) {
+    const {user_id} = params;
+    const user = await User.find(user_id);
+    console.log(user_id);
+    console.log(user);
+    await user.delete();
+    return user;
+  };
 
       async register({request}) {
         const {email, password} = request.all()
