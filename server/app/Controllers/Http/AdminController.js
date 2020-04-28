@@ -4,11 +4,11 @@ const User = use('App/Models/User');
 
 class AdminController {
     async registerAdmin({request}) {
-        const {email, password, username} = request.all()
+        const {email, password} = request.all()
         const admin = await Admin.create({
           email,
           password,
-          username,
+          username: email,
         })
         return admin;
         // return this.login(...arguments);
@@ -21,7 +21,8 @@ class AdminController {
       };
       //Ниже представлен метод, возвращающий список всех Пользователей.
       async getAllUsers(){
-        const userList  = await User.pair('id', 'username');
+        // const userList  = await User.pair('id', 'username');
+        const userList  = await User.all();
         console.log(userList);
         return userList;
       };

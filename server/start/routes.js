@@ -1,18 +1,5 @@
 'use strict'
 
-/*
-|--------------------------------------------------------------------------
-| Routes
-|--------------------------------------------------------------------------
-|
-| Http routes are entry points to your web application. You can create
-| routes for different URLs and bind Controller actions to them.
-|
-| A complete guide on routing is available here.
-| http://adonisjs.com/docs/4.1/routing
-|
-*/
-
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
@@ -28,7 +15,7 @@ Route.group(()=> {
   Route.post('auth/login', 'UserController.login');
   //get all users review
   Route.get('reviews:user_id', 'ReviewController.index').middleware('auth');
-//get all users 
+//get all users
   Route.get('get/admin/users/all', 'AdminController.getAllUsers').middleware('auth:admin')
 //add review
 Route.post('admin/review', 'ReviewController.create').middleware('auth:admin')
@@ -40,7 +27,7 @@ Route.delete('admin/review:review_id','ReviewController.destroy').middleware('au
 Route.patch('admin/review:review_id','ReviewController.update').middleware('auth:admin')
 //task create
 Route.post('review/:review_id/tasks', 'FeedbackController.create').middleware('auth')
-//show all feedback on select 
+//show all feedback on select
 Route.get('review/:review_id/tasks', 'FeedbackController.index').middleware('auth')
 
 })
